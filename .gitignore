@@ -1,13 +1,14 @@
 .DS_Store
 
-# Personal/working files that don't belong on the public site.
-# This folder is a git repo now (pushed to GitHub for hosting), so anything
-# dropped in here gets swept up by `git add` unless it's excluded below.
-# Whole file *types* are blocked, not just today's specific filenames, so a
-# future CV draft or video doesn't need a new rule to stay private.
-#
-# If you genuinely want to publish a specific PDF or video one day (e.g. a
-# preprint), add it with: git add -f path/to/file.pdf
+# Everything in here is off-limits to git, whatever it is. Your CV, the
+# video, and anything else that isn't part of the published site belongs
+# in this one folder — it's the single place to check before a push.
+private/
+
+# Belt-and-suspenders: block these file types everywhere else in the repo
+# too, so a stray document dropped outside private/ doesn't slip through.
+# To publish a specific file on purpose (e.g. a preprint PDF), override
+# with: git add -f path/to/file.pdf
 *.docx
 *.doc
 *.pdf
