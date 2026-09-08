@@ -1,6 +1,18 @@
 .DS_Store
 
-# personal files that shouldn't be published to the public site
-SarshadKV.CV.June.262026.docx
-SarshadKV.CV.June.262026.pdf
-That_s_awesome_but_that_is_a.mp4
+# Personal/working files that don't belong on the public site.
+# This folder is a git repo now (pushed to GitHub for hosting), so anything
+# dropped in here gets swept up by `git add` unless it's excluded below.
+# Whole file *types* are blocked, not just today's specific filenames, so a
+# future CV draft or video doesn't need a new rule to stay private.
+#
+# If you genuinely want to publish a specific PDF or video one day (e.g. a
+# preprint), add it with: git add -f path/to/file.pdf
+*.docx
+*.doc
+*.pdf
+*.pptx
+*.key
+*.mp4
+*.mov
+*.m4v
