@@ -11,27 +11,34 @@ W, H = 900, 58          # scene period (units) and strip height
 VIEW_W = 600            # visible window
 BASE_Y = 48             # the line everything sits on
 HOST_Y = 36             # host cell centre
-R = 11                  # host radius
+ROD_L = 20              # host half-length (rod, not a circle)
+ROD_R = 10              # host radius (the rounded-cap radius / half-width)
 INK, MUTED, RULE = "#111111", "#6b6b6b", "#e8e8e8"
 
 def receptors(kind):
-    """Three surface receptors on the upper arc. 'tick' = naive, 'tee' = switched."""
+    """Four surface receptors along the rod's top edge. 'tick' = naive, 'tee' = switched."""
     out = []
-    for deg in (-40, -75, -105, -140):
-        a = math.radians(deg)
-        bx, by = R * math.cos(a), R * math.sin(a)
-        tx, ty = 14.5 * math.cos(a), 14.5 * math.sin(a)
+    for u in (-0.62, -0.2, 0.2, 0.62):        # spread across the flat top, not around an arc
+        bx, by = u * ROD_L, -ROD_R
+        tx, ty = bx, -ROD_R - 8.5
         out.append(f'<line x1="{bx:.2f}" y1="{by:.2f}" x2="{tx:.2f}" y2="{ty:.2f}"/>')
         if kind == "tee":                      # crossbar: a different receptor
-            px, py = -math.sin(a), math.cos(a)
-            out.append(f'<line x1="{tx+2.5*px:.2f}" y1="{ty+2.5*py:.2f}" '
-                       f'x2="{tx-2.5*px:.2f}" y2="{ty-2.5*py:.2f}"/>')
+            out.append(f'<line x1="{tx-2.5:.2f}" y1="{ty:.2f}" x2="{tx+2.5:.2f}" y2="{ty:.2f}"/>')
     return "".join(out)
+
+def rod_path():
+    """Stadium/capsule outline: a rectangle with two semicircular ends. This is
+    the actual shape of a rod bacterium like E. coli, unlike a plain circle."""
+    L, Rr = ROD_L, ROD_R
+    return (f'M{-L:.2f},{-Rr:.2f} L{L:.2f},{-Rr:.2f} '
+            f'A{Rr:.2f},{Rr:.2f} 0 0 1 {L:.2f},{Rr:.2f} '
+            f'L{-L:.2f},{Rr:.2f} '
+            f'A{Rr:.2f},{Rr:.2f} 0 0 1 {-L:.2f},{-Rr:.2f} Z')
 
 def host(kind="tick", lysed=False):
     if lysed:
-        return (f'<circle class="lysed" cx="0" cy="0" r="{R}"/>')
-    return (f'<circle class="cell" cx="0" cy="0" r="{R}"/>' + receptors(kind))
+        return f'<path class="lysed" d="{rod_path()}"/>'
+    return f'<path class="cell" d="{rod_path()}"/>' + receptors(kind)
 
 def phage(evolved=False):
     head = '<polygon class="head" points="0,-5.5 4.5,-2.75 4.5,2.75 0,5.5 -4.5,2.75 -4.5,-2.75"/>'
@@ -49,7 +56,7 @@ def burst():
     heads = []
     for deg in (-25, -70, -110, -155):
         a = math.radians(deg)
-        x, y = 21 * math.cos(a), 21 * math.sin(a)
+        x, y = 28 * math.cos(a), 28 * math.sin(a)
         heads.append(f'<polygon class="head" transform="translate({x:.2f},{y:.2f})" '
                      f'points="0,-3.5 3,-1.75 3,1.75 0,3.5 -3,1.75 -3,-1.75"/>')
     return f'<g class="burst">{"".join(heads)}</g>'
