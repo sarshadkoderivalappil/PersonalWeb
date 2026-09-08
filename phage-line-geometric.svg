@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 58"
+     width="100%" role="img"
+     aria-label="An animated line: a phage infects a host cell and bursts it; a surviving cell carries a different surface receptor that the phage cannot bind; a changed phage binds it anyway. The cycle repeats.">
+<style>
+  .cell   { fill:#fff; stroke:#111111; stroke-width:1.4 }
+  line, path { stroke:#111111; stroke-width:1.4; fill:none; stroke-linecap:round; stroke-linejoin:round }
+  .head   { fill:#111111 }
+  .dot    { fill:#fff; stroke:none }
+  .lysed  { fill:none; stroke:#6b6b6b; stroke-width:1.2; stroke-dasharray:3 4 }
+  .arc    { stroke:#6b6b6b; stroke-width:1; stroke-dasharray:2 3 }
+  .rule   { stroke:#e8e8e8; stroke-width:1 }
+
+  .track  { animation: scroll 48s linear infinite }
+  @keyframes scroll { from { transform: translateX(0) } to { transform: translateX(-900px) } }
+
+  .bob    { animation: bob 3.5s ease-in-out infinite alternate }
+  @keyframes bob { to { transform: translateY(3px) } }
+
+  .burst  { transform-origin: 0 0; animation: burst 4s ease-out infinite }
+  @keyframes burst {
+    0%   { transform: scale(.5);  opacity:0 }
+    20%  { opacity:1 }
+    100% { transform: scale(1.3); opacity:0 }
+  }
+
+  /* Stops moving for anyone who asks it to. The story still reads left to right. */
+  @media (prefers-reduced-motion: reduce) {
+    .track, .bob, .burst { animation: none }
+  }
+</style>
+
+<defs>
+  <linearGradient id="fadeL" x1="0" x2="1">
+    <stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="fadeR" x1="0" x2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/>
+  </linearGradient>
+</defs>
+
+<g class="track">
+  <g transform="translate(0,0)"><g transform="translate(90,36)"><circle class="cell" cx="0" cy="0" r="11"/><line x1="8.43" y1="-7.07" x2="11.11" y2="-9.32"/><line x1="2.85" y1="-10.63" x2="3.75" y2="-14.01"/><line x1="-2.85" y1="-10.63" x2="-3.75" y2="-14.01"/><line x1="-8.43" y1="-7.07" x2="-11.11" y2="-9.32"/><g transform="translate(26,-28) rotate(14)"><g class="bob"><polygon class="head" points="0,-5.5 4.5,-2.75 4.5,2.75 0,5.5 -4.5,2.75 -4.5,-2.75"/><line class="fibre" x1="0" y1="5.5" x2="0" y2="12"/><line class="fibre" x1="0" y1="12" x2="-4" y2="15.5"/><line class="fibre" x1="0" y1="12" x2="4" y2="15.5"/></g></g></g><g transform="translate(270,36)"><circle class="cell" cx="0" cy="0" r="11"/><line x1="8.43" y1="-7.07" x2="11.11" y2="-9.32"/><line x1="2.85" y1="-10.63" x2="3.75" y2="-14.01"/><line x1="-2.85" y1="-10.63" x2="-3.75" y2="-14.01"/><line x1="-8.43" y1="-7.07" x2="-11.11" y2="-9.32"/><g transform="translate(0,-24)"><polygon class="head" points="0,-5.5 4.5,-2.75 4.5,2.75 0,5.5 -4.5,2.75 -4.5,-2.75"/><line class="fibre" x1="0" y1="5.5" x2="0" y2="12"/><line class="fibre" x1="0" y1="12" x2="-4" y2="15.5"/><line class="fibre" x1="0" y1="12" x2="4" y2="15.5"/></g></g><g transform="translate(450,36)"><circle class="lysed" cx="0" cy="0" r="11"/><g class="burst"><polygon class="head" transform="translate(19.03,-8.87)" points="0,-3.5 3,-1.75 3,1.75 0,3.5 -3,1.75 -3,-1.75"/><polygon class="head" transform="translate(7.18,-19.73)" points="0,-3.5 3,-1.75 3,1.75 0,3.5 -3,1.75 -3,-1.75"/><polygon class="head" transform="translate(-7.18,-19.73)" points="0,-3.5 3,-1.75 3,1.75 0,3.5 -3,1.75 -3,-1.75"/><polygon class="head" transform="translate(-19.03,-8.87)" points="0,-3.5 3,-1.75 3,1.75 0,3.5 -3,1.75 -3,-1.75"/></g></g><g transform="translate(630,36)"><circle class="cell" cx="0" cy="0" r="11"/><line x1="8.43" y1="-7.07" x2="11.11" y2="-9.32"/><line x1="12.71" y1="-7.41" x2="9.50" y2="-11.24"/><line x1="2.85" y1="-10.63" x2="3.75" y2="-14.01"/><line x1="6.17" y1="-13.36" x2="1.34" y2="-14.65"/><line x1="-2.85" y1="-10.63" x2="-3.75" y2="-14.01"/><line x1="-1.34" y1="-14.65" x2="-6.17" y2="-13.36"/><line x1="-8.43" y1="-7.07" x2="-11.11" y2="-9.32"/><line x1="-9.50" y1="-11.24" x2="-12.71" y2="-7.41"/><path class="arc" d="M14,-14 Q26,-22 34,-14"/><g transform="translate(30,-32) rotate(32)"><polygon class="head" points="0,-5.5 4.5,-2.75 4.5,2.75 0,5.5 -4.5,2.75 -4.5,-2.75"/><line class="fibre" x1="0" y1="5.5" x2="0" y2="12"/><line class="fibre" x1="0" y1="12" x2="-4" y2="15.5"/><line class="fibre" x1="0" y1="12" x2="4" y2="15.5"/></g></g><g transform="translate(810,36)"><circle class="cell" cx="0" cy="0" r="11"/><line x1="8.43" y1="-7.07" x2="11.11" y2="-9.32"/><line x1="12.71" y1="-7.41" x2="9.50" y2="-11.24"/><line x1="2.85" y1="-10.63" x2="3.75" y2="-14.01"/><line x1="6.17" y1="-13.36" x2="1.34" y2="-14.65"/><line x1="-2.85" y1="-10.63" x2="-3.75" y2="-14.01"/><line x1="-1.34" y1="-14.65" x2="-6.17" y2="-13.36"/><line x1="-8.43" y1="-7.07" x2="-11.11" y2="-9.32"/><line x1="-9.50" y1="-11.24" x2="-12.71" y2="-7.41"/><g transform="translate(0,-24)"><polygon class="head" points="0,-5.5 4.5,-2.75 4.5,2.75 0,5.5 -4.5,2.75 -4.5,-2.75"/><line class="fibre" x1="0" y1="5.5" x2="0" y2="12"/><path class="fibre" d="M0,12 L-4,15.5 L-7,14"/><path class="fibre" d="M0,12 L4,15.5 L7,14"/><circle class="dot" cx="0" cy="0" r="1.6"/></g></g></g>
+  <g transform="translate(900,0)"><g transform="translate(90,36)"><circle class="cell" cx="0" cy="0" r="11"/><line x1="8.43" y1="-7.07" x2="11.11" y2="-9.32"/><line x1="2.85" y1="-10.63" x2="3.75" y2="-14.01"/><line x1="-2.85" y1="-10.63" x2="-3.75" y2="-14.01"/><line x1="-8.43" y1="-7.07" x2="-11.11" y2="-9.32"/><g transform="translate(26,-28) rotate(14)"><g class="bob"><polygon class="head" points="0,-5.5 4.5,-2.75 4.5,2.75 0,5.5 -4.5,2.75 -4.5,-2.75"/><line class="fibre" x1="0" y1="5.5" x2="0" y2="12"/><line class="fibre" x1="0" y1="12" x2="-4" y2="15.5"/><line class="fibre" x1="0" y1="12" x2="4" y2="15.5"/></g></g></g><g transform="translate(270,36)"><circle class="cell" cx="0" cy="0" r="11"/><line x1="8.43" y1="-7.07" x2="11.11" y2="-9.32"/><line x1="2.85" y1="-10.63" x2="3.75" y2="-14.01"/><line x1="-2.85" y1="-10.63" x2="-3.75" y2="-14.01"/><line x1="-8.43" y1="-7.07" x2="-11.11" y2="-9.32"/><g transform="translate(0,-24)"><polygon class="head" points="0,-5.5 4.5,-2.75 4.5,2.75 0,5.5 -4.5,2.75 -4.5,-2.75"/><line class="fibre" x1="0" y1="5.5" x2="0" y2="12"/><line class="fibre" x1="0" y1="12" x2="-4" y2="15.5"/><line class="fibre" x1="0" y1="12" x2="4" y2="15.5"/></g></g><g transform="translate(450,36)"><circle class="lysed" cx="0" cy="0" r="11"/><g class="burst"><polygon class="head" transform="translate(19.03,-8.87)" points="0,-3.5 3,-1.75 3,1.75 0,3.5 -3,1.75 -3,-1.75"/><polygon class="head" transform="translate(7.18,-19.73)" points="0,-3.5 3,-1.75 3,1.75 0,3.5 -3,1.75 -3,-1.75"/><polygon class="head" transform="translate(-7.18,-19.73)" points="0,-3.5 3,-1.75 3,1.75 0,3.5 -3,1.75 -3,-1.75"/><polygon class="head" transform="translate(-19.03,-8.87)" points="0,-3.5 3,-1.75 3,1.75 0,3.5 -3,1.75 -3,-1.75"/></g></g><g transform="translate(630,36)"><circle class="cell" cx="0" cy="0" r="11"/><line x1="8.43" y1="-7.07" x2="11.11" y2="-9.32"/><line x1="12.71" y1="-7.41" x2="9.50" y2="-11.24"/><line x1="2.85" y1="-10.63" x2="3.75" y2="-14.01"/><line x1="6.17" y1="-13.36" x2="1.34" y2="-14.65"/><line x1="-2.85" y1="-10.63" x2="-3.75" y2="-14.01"/><line x1="-1.34" y1="-14.65" x2="-6.17" y2="-13.36"/><line x1="-8.43" y1="-7.07" x2="-11.11" y2="-9.32"/><line x1="-9.50" y1="-11.24" x2="-12.71" y2="-7.41"/><path class="arc" d="M14,-14 Q26,-22 34,-14"/><g transform="translate(30,-32) rotate(32)"><polygon class="head" points="0,-5.5 4.5,-2.75 4.5,2.75 0,5.5 -4.5,2.75 -4.5,-2.75"/><line class="fibre" x1="0" y1="5.5" x2="0" y2="12"/><line class="fibre" x1="0" y1="12" x2="-4" y2="15.5"/><line class="fibre" x1="0" y1="12" x2="4" y2="15.5"/></g></g><g transform="translate(810,36)"><circle class="cell" cx="0" cy="0" r="11"/><line x1="8.43" y1="-7.07" x2="11.11" y2="-9.32"/><line x1="12.71" y1="-7.41" x2="9.50" y2="-11.24"/><line x1="2.85" y1="-10.63" x2="3.75" y2="-14.01"/><line x1="6.17" y1="-13.36" x2="1.34" y2="-14.65"/><line x1="-2.85" y1="-10.63" x2="-3.75" y2="-14.01"/><line x1="-1.34" y1="-14.65" x2="-6.17" y2="-13.36"/><line x1="-8.43" y1="-7.07" x2="-11.11" y2="-9.32"/><line x1="-9.50" y1="-11.24" x2="-12.71" y2="-7.41"/><g transform="translate(0,-24)"><polygon class="head" points="0,-5.5 4.5,-2.75 4.5,2.75 0,5.5 -4.5,2.75 -4.5,-2.75"/><line class="fibre" x1="0" y1="5.5" x2="0" y2="12"/><path class="fibre" d="M0,12 L-4,15.5 L-7,14"/><path class="fibre" d="M0,12 L4,15.5 L7,14"/><circle class="dot" cx="0" cy="0" r="1.6"/></g></g></g>
+</g>
+
+<rect x="0" y="0" width="80" height="58" fill="url(#fadeL)"/>
+<rect x="520" y="0" width="80" height="58" fill="url(#fadeR)"/>
+
+<line class="rule" x1="0" y1="48" x2="600" y2="48"/>
+</svg>

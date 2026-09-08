@@ -1,0 +1,100 @@
+/* ------------------------------------------------------------------
+   Shared styles. Every page links to this file, so a change here
+   changes the whole site.
+   ------------------------------------------------------------------ */
+
+:root{
+  --bg:#ffffff;
+  --ink:#111111;
+  --muted:#6b6b6b;
+  --rule:#e8e8e8;
+  --measure:38rem;          /* column width */
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:var(--measure);margin:0 auto;padding:5rem 1.5rem 6rem}
+
+/* ---- nav ---- */
+nav{display:flex;gap:1.5rem;margin-bottom:4.5rem;font-size:.95rem;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover,nav a[aria-current="page"]{color:var(--ink)}
+
+/* ---- header ---- */
+.avatar{
+  width:88px;height:88px;border-radius:50%;
+  object-fit:cover;display:block;margin-bottom:1.75rem;
+  background:#f4f4f4;                /* shows until you add photo.jpg */
+}
+h1{font-size:2rem;line-height:1.2;letter-spacing:-.02em;margin:0 0 .75rem}
+.lede{font-size:1.125rem;margin:0 0 1rem}
+
+/* ---- sections ---- */
+section{margin-top:3.5rem}
+h2{
+  font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 1.25rem;
+}
+h3{font-size:1.05rem;margin:0 0 .3rem;font-weight:600}
+p{margin:0 0 1.1rem}
+hr{border:0;border-top:1px solid var(--rule);margin:3.5rem 0}
+
+/* ---- lists ---- */
+ul{list-style:none;padding:0;margin:0}
+li{margin-bottom:1.25rem}
+.meta{color:var(--muted);font-size:.9rem;display:block}
+
+/* ---- notes (the "Excited about" entries) ---- */
+.note{margin-bottom:2rem}
+.note a{text-decoration:none}
+.note a:hover h3{text-decoration:underline;text-decoration-color:var(--ink);text-underline-offset:3px}
+.note .why{margin:.35rem 0 0;color:var(--ink)}
+.date{color:var(--muted);font-size:.85rem;letter-spacing:.02em}
+
+/* ---- article body (individual note pages) ---- */
+article p{margin:0 0 1.2rem}
+article h2{text-transform:none;letter-spacing:0;font-size:1.05rem;color:var(--ink);margin:2.5rem 0 .75rem}
+blockquote{
+  margin:1.75rem 0;padding-left:1.25rem;
+  border-left:2px solid var(--rule);color:var(--muted);
+}
+.back{display:inline-block;margin-top:3.5rem;font-size:.9rem}
+
+/* ---- links ---- */
+a{color:var(--ink);text-decoration:underline;text-decoration-color:#cfcfcf;text-underline-offset:3px}
+a:hover{text-decoration-color:var(--ink)}
+
+footer{margin-top:5rem;color:var(--muted);font-size:.85rem}
+
+@media (max-width:520px){
+  .wrap{padding:3rem 1.25rem 4rem}
+  nav{margin-bottom:3rem;gap:1.1rem}
+  h1{font-size:1.6rem}
+}
+
+/* ---- the phage/host line ---- */
+.evo{margin:2.75rem 0 0;padding:0}
+.evo img{display:block;width:100%;height:auto}
+.evo figcaption{color:var(--muted);font-size:.85rem;margin-top:.6rem}
+
+/* ---- figures inside a note ---- */
+article figure{margin:2.25rem 0;padding:0}
+article figure img{display:block;width:100%;height:auto;border:1px solid var(--rule)}
+article figcaption{color:var(--muted);font-size:.85rem;margin-top:.6rem}
+/* let a wide diagram breathe past the text column on big screens */
+@media (min-width:900px){
+  article figure.wide{width:calc(100% + 8rem);margin-left:-4rem}
+}
+
+/* a plain image in a note: no frame, no caption */
+article img.plain{display:block;width:100%;height:auto;margin:2rem 0}
