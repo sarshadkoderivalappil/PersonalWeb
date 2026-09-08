@@ -97,4 +97,5 @@ article figcaption{color:var(--muted);font-size:.85rem;margin-top:.6rem}
 }
 
 /* a plain image in a note: no frame, no caption */
-article img.plain{display:block;width:100%;height:auto;margin:2rem 0}
+article img.plain,
+article video.plain{display:block;width:100%;height:auto;margin:2rem 0}
